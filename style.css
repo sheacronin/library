@@ -34,8 +34,13 @@ form {
     width: 70vw;
     margin: 20px auto;
     text-align: center;
+    display: none;
 }
 
 form div {
     margin: 20px auto 0 auto;
+}
+
+.visible {
+    display: block;
 }
