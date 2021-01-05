@@ -11,3 +11,13 @@ body {
     height: 500px;
     margin: 0 auto;
 }
+
+.book {
+    background-color: cornflowerblue;
+    height: 30px;
+    width: 200px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
