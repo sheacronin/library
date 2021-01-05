@@ -4,3 +4,10 @@ body {
     margin: 0 auto;
     text-align: center;
 }
+
+#shelf {
+    background-color: burlywood;
+    width: 70vw;
+    height: 500px;
+    margin: 0 auto;
+}
