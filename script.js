@@ -1,4 +1,4 @@
-let myLibrary = ['Harry Potter', 'Normal People'];
+let myLibrary = [];
 
 // Constructor of book objects.
 function Book(title, author, pages, read) {
@@ -23,7 +23,7 @@ function addBookToLibrary(e) {
     myLibrary.push(book);
     console.log(myLibrary);
 
-    // Update display.
+    // Update display. !! Need to fix this to not add every book in array !!
     displayBooks();
 }
 
