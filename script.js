@@ -31,7 +31,10 @@ function addBookToLibrary() {
 
 // Removes book from library and display shelf when remove btn is clicked.
 function removeBookFromLibrary(e) {
-    console.log(e);
+    let i = e.toElement.parentElement.dataset.index;
+    myLibrary.splice(i, 1);
+
+    // Call another function to remove it from display.
 }
 
 function toggleDisplayForm() {
