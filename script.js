@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 // Constructor of book objects.
 function Book(title, author, pages, read) {
     this.title = title;
@@ -7,6 +5,11 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+
+// Example book to add to library.
+const normalPeople = new Book('Normal People', 'Sally Rooney', 100, false)
+
+let myLibrary = [normalPeople];
 
 // Create form variables.
 const newBookForm = document.querySelector('form');
@@ -24,6 +27,11 @@ function addBookToLibrary() {
 
     // Update display.
     displayBook(book);
+}
+
+// Removes book from library and display shelf when remove btn is clicked.
+function removeBookFromLibrary(e) {
+    console.log(e);
 }
 
 function toggleDisplayForm() {
@@ -50,9 +58,13 @@ function displayBook(book) {
     let bookCard = document.createElement('div');
     bookCard.classList.add('book');
     bookCard.textContent = book.title;
+    // Add data attribute of book's index in library array.
+    bookCard.dataset.index = myLibrary.indexOf(book);
 
     let removeBtn = document.createElement('button');
     removeBtn.textContent = '-';
+    // Make it so clicking button will remove book from library.
+    removeBtn.addEventListener('click', removeBookFromLibrary);
     bookCard.appendChild(removeBtn);
 
     shelf.appendChild(bookCard);
