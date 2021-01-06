@@ -76,11 +76,19 @@ function displayBook(book) {
     // Add data attribute of book's index in library array.
     bookCard.dataset.index = myLibrary.indexOf(book);
 
+    // Add button to remove book from library.
     let removeBtn = document.createElement('button');
     removeBtn.textContent = '-';
-    // Make it so clicking button will remove book from library.
     removeBtn.addEventListener('click', removeBookFromLibrary);
     bookCard.appendChild(removeBtn);
+
+    // Add button to toggle read status.
+    let readBtn = document.createElement('button');
+    readBtn.textContent = 'Read?';
+    readBtn.addEventListener('click', () => {
+        book.toggleReadStatus()
+    });
+    bookCard.appendChild(readBtn);
 
     shelf.appendChild(bookCard);
 }
