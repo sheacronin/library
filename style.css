@@ -3,6 +3,8 @@ body {
     font-family: sans-serif;
     margin: 0 auto;
     text-align: center;
+    font-family: 'Yeseva One', cursive;
+    font-size: 18px;
 }
 
 #shelf {
@@ -10,32 +12,44 @@ body {
     width: 70vw;
     height: 500px;
     margin: 0 auto;
+    display: flex;
 }
 
 .book {
     background-color: #eef0f2;
-    height: 30px;
-    width: 200px;
+    height: 50px;
+    width: 300px;
     margin: 10px auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    background-color: #353B3C;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #new-book-btn {
-    border: none;
     margin: 20px auto 0 auto;
-    padding: 10px;
-    background-color: #353B3C;
-    color: white;
 }
 
 form {
     background-color: #eef0f2;
-    width: 70vw;
+    width: 60vw;
     margin: 20px auto;
     text-align: center;
     display: none;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1px 0 20px 0;
 }
 
 form div {
