@@ -22,7 +22,7 @@ function addBookToLibrary() {
     let book = new Book(title.value, author.value, pages.value, read.value);
     myLibrary.push(book);
 
-    // Update display. !! Need to fix this to not add every book in array !!
+    // Update display.
     updateBookDisplay(book);
 }
 
@@ -47,6 +47,7 @@ const shelf = document.querySelector('#shelf');
 
 function displayBooks() {
     for (book of myLibrary) {
+        // Can add updateBookDisplay function here instead.
         let bookCard = document.createElement('div');
         bookCard.classList.add('book');
         bookCard.textContent = book;
@@ -62,5 +63,10 @@ function updateBookDisplay(book) {
     let bookCard = document.createElement('div');
     bookCard.classList.add('book');
     bookCard.textContent = book.title;
+
+    let removeBtn = document.createElement('button');
+    removeBtn.textContent = '-';
+    bookCard.appendChild(removeBtn);
+
     shelf.appendChild(bookCard);
 }
