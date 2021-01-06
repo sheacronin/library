@@ -6,6 +6,11 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+// Method to toggle book's read status.
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
+}
+
 // Example book to add to library.
 const normalPeople = new Book('Normal People', 'Sally Rooney', 100, false)
 
