@@ -13,7 +13,7 @@ const newBookForm = document.querySelector('form');
 let isFormVisible = false;
 
 // Creates new book object and pushes to library array.
-function addBookToLibrary(e) {
+function addBookToLibrary() {
     const title = document.querySelector('#title');
     const author = document.querySelector('#author');
     const pages = document.querySelector('#pages');
@@ -21,10 +21,9 @@ function addBookToLibrary(e) {
 
     let book = new Book(title.value, author.value, pages.value, read.value);
     myLibrary.push(book);
-    console.log(myLibrary);
 
     // Update display. !! Need to fix this to not add every book in array !!
-    displayBooks();
+    updateBookDisplay(book);
 }
 
 function toggleDisplayForm() {
@@ -55,4 +54,13 @@ function displayBooks() {
     }
 }
 
+// Initially display library.
 displayBooks();
+
+// Function runs when adding a new book to display. Takes book object as arg.
+function updateBookDisplay(book) {
+    let bookCard = document.createElement('div');
+    bookCard.classList.add('book');
+    bookCard.textContent = book.title;
+    shelf.appendChild(bookCard);
+}
