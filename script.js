@@ -23,7 +23,7 @@ function addBookToLibrary() {
     myLibrary.push(book);
 
     // Update display.
-    updateBookDisplay(book);
+    displayBook(book);
 }
 
 function toggleDisplayForm() {
@@ -45,21 +45,8 @@ submitBtn.addEventListener('click', addBookToLibrary);
 
 const shelf = document.querySelector('#shelf');
 
-function displayBooks() {
-    for (book of myLibrary) {
-        // Can add updateBookDisplay function here instead.
-        let bookCard = document.createElement('div');
-        bookCard.classList.add('book');
-        bookCard.textContent = book;
-        shelf.appendChild(bookCard);
-    }
-}
-
-// Initially display library.
-displayBooks();
-
 // Function runs when adding a new book to display. Takes book object as arg.
-function updateBookDisplay(book) {
+function displayBook(book) {
     let bookCard = document.createElement('div');
     bookCard.classList.add('book');
     bookCard.textContent = book.title;
@@ -70,3 +57,12 @@ function updateBookDisplay(book) {
 
     shelf.appendChild(bookCard);
 }
+
+function displayAllBooks() {
+    for (book of myLibrary) {
+        displayBook(book);
+    }
+}
+
+// Initially display library.
+displayAllBooks();
