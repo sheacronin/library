@@ -17,6 +17,13 @@ const normalPeople = new Book('Normal People', 'Sally Rooney', 100, false)
 // Library array to store book objects.
 let myLibrary = [normalPeople];
 
+// Local storage code.
+if(!localStorage.getItem('mylibrary')) {
+    // Example book / Empty library
+} else {
+    // Update page with user's library
+    myLibrary = JSON.parse(localStorage.getItem('mylibrary')); // Parse to un-stringify array.
+}
 
 // Create form variables.
 const newBookForm = document.querySelector('form');
@@ -49,6 +56,9 @@ function addBookToLibrary() {
 
     // Update display.
     displayBook(book);
+
+    // Update myLibrary array in storage.
+    localStorage.setItem('mylibrary', JSON.stringify(myLibrary)); // Convert array & objects to string.
 }
 
 // Removes book from library and display shelf when remove btn is clicked.
