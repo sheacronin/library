@@ -48,12 +48,12 @@ newBookBtn.addEventListener('click', toggleDisplayForm);
 
 // Creates new book object and pushes to library array.
 function addBookToLibrary() {
-    const title = document.querySelector('#title');
-    const author = document.querySelector('#author');
-    const pages = document.querySelector('#pages');
-    const read = document.querySelector('#read');
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = parseInt(document.querySelector('#pages').value);
+    const read =  document.querySelector('#read').value === 'on' ? true : false;
 
-    let book = new Book(title.value, author.value, pages.value, read.value);
+    let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 
     // Update display.
@@ -101,7 +101,7 @@ function displayBook(book) {
     let readBtn = document.createElement('button');
     readBtn.textContent = 'Read?';
     readBtn.addEventListener('click', () => {
-        book.toggleReadStatus()
+        book.toggleReadStatus();
     });
     bookCard.appendChild(readBtn);
 
