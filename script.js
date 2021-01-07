@@ -4,18 +4,20 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.toggleReadStatus = function() { // Method to toggle book's read status.
+        this.read = !this.read;
+    }
 }
 
 // Method to toggle book's read status.
-Book.prototype.toggleReadStatus = function() {
-    this.read = !this.read;
-}
-
-// Example book to add to library.
-const normalPeople = new Book('Normal People', 'Sally Rooney', 100, false)
+// Moved from prototype to constructor b/c local storage
+        // stripped objs of prototypes.
+// Book.prototype.toggleReadStatus = function() {
+    
+// }
 
 // Library array to store book objects.
-let myLibrary = [normalPeople];
+let myLibrary = [];
 
 // Local storage code.
 if(!localStorage.getItem('mylibrary')) {
@@ -69,6 +71,9 @@ function removeBookFromLibrary(e) {
 
     // Call another function to remove it from display.
     removeBookFromDisplay(thisBook);
+
+    // Update myLibrary array in storage.
+    localStorage.setItem('mylibrary', JSON.stringify(myLibrary));
 }
 
 // Button to submit new book form.
