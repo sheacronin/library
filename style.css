@@ -32,20 +32,15 @@ body {
 
 .book button {
     font-size: 14px;
-    background-color: #9a9c96;
     width: 40px;
     height: 40px;
     margin-left: 10px;
     padding: 0;
 }
 
-/* .unread {
-    background-color: ;
-}
-
 .read {
-
-} */
+    background-color: darkolivegreen;
+}
 
 button {
     border: none;

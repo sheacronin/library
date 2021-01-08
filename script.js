@@ -6,10 +6,28 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+// Function to update library in local storage.
+function updateLocalStorageLib() {
+    localStorage.setItem('mylibrary', JSON.stringify(myLibrary)); // Convert array & objects to string.
+}
+
 // Method to toggle book's read status.
 Book.prototype.toggleReadStatus = function() {
     this.read = !this.read;
     console.log('Toggled read status of ' + this.title + ' to ' + this.read);
+
+    // Update stored library.
+    updateLocalStorageLib(); 
+}
+
+function toggleReadDisplay(el, book) {
+    if (book.read) {
+        el.textContent = 'Read';
+        el.classList.add('read');
+    } else {
+        el.textContent = 'Unread';
+        el.classList.remove('read');
+    }
 }
 
 // Library array to store book objects.
@@ -50,16 +68,17 @@ function addBookToLibrary() {
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = parseInt(document.querySelector('#pages').value);
-    const read =  document.querySelector('#read').value === 'on' ? true : false;
+    const read =  document.querySelector('#read').checked ? true : false;
 
     let book = new Book(title, author, pages, read);
+    console.log(book);
     myLibrary.push(book);
 
     // Update display.
     displayBook(book);
 
     // Update myLibrary array in storage.
-    localStorage.setItem('mylibrary', JSON.stringify(myLibrary)); // Convert array & objects to string.
+    updateLocalStorageLib();
 }
 
 // Removes book from library and display shelf when remove btn is clicked.
@@ -72,7 +91,7 @@ function removeBookFromLibrary(e) {
     removeBookFromDisplay(thisBook);
 
     // Update myLibrary array in storage.
-    localStorage.setItem('mylibrary', JSON.stringify(myLibrary));
+    updateLocalStorageLib();
 }
 
 // Button to submit new book form.
@@ -98,9 +117,14 @@ function displayBook(book) {
 
     // Add button to toggle read status.
     let readBtn = document.createElement('button');
-    readBtn.textContent = 'Read?';
+    // Check if book is read to determine display.
+    toggleReadDisplay(readBtn, book);
+    // Add event listeners to toggle read status.
     readBtn.addEventListener('click', () => {
         book.toggleReadStatus();
+    });
+    readBtn.addEventListener('click',(e) => {
+        toggleReadDisplay(e.target, book);
     });
     bookCard.appendChild(readBtn);
 
