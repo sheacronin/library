@@ -1,10 +1,11 @@
 body {
-    background-color: #c6c7c4;
+    background-color: #eef0f2;
     font-family: sans-serif;
     margin: 0 auto;
     text-align: center;
     font-family: 'Yeseva One', cursive;
     font-size: 18px;
+    color: #353B3C;
 }
 
 #shelf {
@@ -13,10 +14,11 @@ body {
     height: 500px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .book {
-    background-color: #eef0f2;
+    background-color: #c6c7c4;
     height: 50px;
     width: 300px;
     margin: 10px auto;
@@ -30,7 +32,7 @@ body {
 
 .book button {
     font-size: 14px;
-    background-color: #999999;
+    background-color: #9a9c96;
     width: 40px;
     height: 40px;
     margin-left: 10px;
@@ -60,7 +62,7 @@ button {
 }
 
 form {
-    background-color: #eef0f2;
+    background-color: #c6c7c4;
     width: 60vw;
     margin: 20px auto;
     text-align: center;

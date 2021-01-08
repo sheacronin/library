@@ -4,27 +4,26 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.toggleReadStatus = function() { // Method to toggle book's read status.
-        this.read = !this.read;
-    }
 }
 
 // Method to toggle book's read status.
-// Moved from prototype to constructor b/c local storage
-        // stripped objs of prototypes.
-// Book.prototype.toggleReadStatus = function() {
-    
-// }
+Book.prototype.toggleReadStatus = function() {
+    this.read = !this.read;
+    console.log('Toggled read status of ' + this.title + ' to ' + this.read);
+}
 
 // Library array to store book objects.
 let myLibrary = [];
 
-// Local storage code.
-if(!localStorage.getItem('mylibrary')) {
-    // Example book / Empty library
-} else {
+// Check if books exist in local storage.
+if (localStorage.getItem('mylibrary')) {
     // Update page with user's library
-    myLibrary = JSON.parse(localStorage.getItem('mylibrary')); // Parse to un-stringify array.
+    const storedLibrary = JSON.parse(localStorage.getItem('mylibrary')); // Parse to un-stringify array.
+    storedLibrary.forEach(book => {
+        // Reconstruct book objects to give them Book prototype.
+        book = new Book(book.title, book.author, book.pages, book.read);
+        myLibrary.push(book);
+    });
 }
 
 // Create form variables.
