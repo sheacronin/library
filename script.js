@@ -70,7 +70,7 @@ if (localStorage.getItem('mylibrary')) {
 
 function toggleDisplayForm() {
     if (!isFormVisible) { 
-        if (!infoEl.firstElementChild.textContent == '') { // If info is displayed, remove it.
+        if (!infoEl.lastElementChild.textContent == '') { // If info is displayed, remove it.
             for (child of infoEl.children) {
                 child.textContent = '';
             }
