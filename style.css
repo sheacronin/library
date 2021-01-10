@@ -8,13 +8,30 @@ body {
     color: #353B3C;
 }
 
+#container {
+    width: 90vw;
+    height: 510px;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+}
+
+#info {
+    background-color: cornflowerblue;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+}
+
 #shelf {
     background-color:#846A6A;
-    width: 70vw;
+    width: 50%;
     height: 500px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    overflow: scroll;
+    padding-top: 10px;
 }
 
 .book {
