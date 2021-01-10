@@ -32,12 +32,19 @@ function toggleReadDisplay(el, book) {
 
 Book.prototype.info = function() {
     let readString = this.read ? 'read' : 'not read yet';
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`
+    return [this.title, `by ${this.author}`, `${this.pages} pages`, readString];
 }
 
-function displayBookInfo(string) {
-    const info = document.querySelector('#info');
-    info.textContent = string;
+function displayBookInfo(infoArray) {
+    const titleEl = document.querySelector('#title');
+    const authorEl = document.querySelector('#author');
+    const pagesEl = document.querySelector('#pages');
+    const readEl = document.querySelector('#read');
+
+    titleEl.textContent = infoArray[0];
+    authorEl.textContent = infoArray[1];
+    pagesEl.textContent = infoArray[2];
+    readEl.textContent = infoArray[3];
 }
 
 // Library array to store book objects.

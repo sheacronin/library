@@ -16,8 +16,9 @@ body {
     display: flex;
 }
 
-#info {
-    background-color: cornflowerblue;
+#info-container {
+    background-color: #A2999E;
+    color: white;
     width: 30%;
     height: 100%;
     margin: 0;
