@@ -35,16 +35,23 @@ Book.prototype.info = function() {
     return [this.title, `by ${this.author}`, `${this.pages} pages`, readString];
 }
 
-function displayBookInfo(infoArray) {
-    const titleEl = document.querySelector('#title');
-    const authorEl = document.querySelector('#author');
-    const pagesEl = document.querySelector('#pages');
-    const readEl = document.querySelector('#read');
+// Info element.
+const infoEl = document.querySelector('#info');
 
-    titleEl.textContent = infoArray[0];
-    authorEl.textContent = infoArray[1];
-    pagesEl.textContent = infoArray[2];
-    readEl.textContent = infoArray[3];
+// Form variables.
+const newBookForm = document.querySelector('form');
+let isFormVisible = false;
+
+function displayBookInfo(infoArray) {
+    if (isFormVisible) { // If form is visible, hide it.
+        toggleDisplayForm();
+    }
+
+    let i = 0;
+    for (child of infoEl.children) {
+        child.textContent = infoArray[i];
+        i++;
+    }
 }
 
 // Library array to store book objects.
@@ -61,12 +68,13 @@ if (localStorage.getItem('mylibrary')) {
     });
 }
 
-// Create form variables.
-const newBookForm = document.querySelector('form');
-let isFormVisible = false;
-
 function toggleDisplayForm() {
-    if (!isFormVisible) {
+    if (!isFormVisible) { 
+        if (!infoEl.firstElementChild.textContent == '') { // If info is displayed, remove it.
+            for (child of infoEl.children) {
+                child.textContent = '';
+            }
+        }
         newBookForm.classList.add('visible');
         isFormVisible = true;
     } else {

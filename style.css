@@ -110,13 +110,11 @@ button {
 }
 
 form {
-    background-color: #c6c7c4;
-    width: 60vw;
-    margin: 20px auto;
+    height: 100%;
+    width: 100%;
     text-align: center;
     display: none;
     font-family: 'Open Sans', sans-serif;
-    padding: 1px 0 20px 0;
 }
 
 form div {
