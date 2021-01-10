@@ -18,22 +18,53 @@ body {
 }
 
 .book {
-    background-color: #c6c7c4;
-    height: 50px;
-    width: 300px;
+    position: relative;
     margin: 10px auto;
+    background-color: #c6c7c4;
+    background: linear-gradient(#D7D7D5, #c6c7c4);
+    height: 80px;
+    width: 300px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Open Sans', sans-serif;
-    border-radius: 10px;
     font-weight: bold;
+    box-shadow: #D7D7D5 21px -11px;
+}
+
+/* Diagonal front/back of book */
+.book::before {
+    /* Main is bottom right */
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    right: -27px;
+    background-color:#c6c7c4;
+    height: 12px;
+    width: 40px;
+    border-radius: 10px;
+    transform: rotate(-25deg);
+    box-shadow: #D7D7D5 25px -61px, /* Top right */
+    #D7D7D5 -233px -182px; /* Top left */
+}
+
+/* White pages of book */
+.book::after { 
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -20px;
+    background-color: white;
+    height: 54px;
+    width: 31px;
+    transform: skewY(-25deg);
 }
 
 .book button {
     font-size: 14px;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 50px;
     margin-left: 10px;
     padding: 0;
 }
