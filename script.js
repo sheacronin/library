@@ -30,6 +30,16 @@ function toggleReadDisplay(el, book) {
     }
 }
 
+Book.prototype.info = function() {
+    let readString = this.read ? 'read' : 'not read yet';
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${readString}`
+}
+
+function displayBookInfo(string) {
+    const info = document.querySelector('#info');
+    info.textContent = string;
+}
+
 // Library array to store book objects.
 let myLibrary = [];
 
@@ -108,6 +118,11 @@ function displayBook(book) {
     bookCard.textContent = book.title;
     // Add data attribute of book's index in library array.
     bookCard.dataset.index = myLibrary.indexOf(book);
+    // Add event listener to show info when user clicks on book.
+    bookCard.addEventListener('click', () => {
+        console.log('clicked ' + book.title);
+        displayBookInfo(book.info());
+    });
 
     // Add button to remove book from library.
     let removeBtn = document.createElement('button');
