@@ -1,23 +1,29 @@
-// Constructor of book objects.
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// Class for Book objects.
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    // Method to toggle book's read status.
+    toggleReadStatus() {
+        this.read = !this.read;
+        console.log('Toggled read status of ' + this.title + ' to ' + this.read);
+    
+        // Update stored library.
+        updateLocalStorageLib(); 
+    }
+    // Method to provide information about the book.
+    info() {
+        let readString = this.read ? 'read' : 'not read yet';
+        return [this.title, `by ${this.author}`, `${this.pages} pages`, readString];
+    }
 }
 
 // Function to update library in local storage.
 function updateLocalStorageLib() {
     localStorage.setItem('mylibrary', JSON.stringify(myLibrary)); // Convert array & objects to string.
-}
-
-// Method to toggle book's read status.
-Book.prototype.toggleReadStatus = function() {
-    this.read = !this.read;
-    console.log('Toggled read status of ' + this.title + ' to ' + this.read);
-
-    // Update stored library.
-    updateLocalStorageLib(); 
 }
 
 function toggleReadDisplay(el, book) {
@@ -28,11 +34,6 @@ function toggleReadDisplay(el, book) {
         el.textContent = 'Unread';
         el.classList.remove('read');
     }
-}
-
-Book.prototype.info = function() {
-    let readString = this.read ? 'read' : 'not read yet';
-    return [this.title, `by ${this.author}`, `${this.pages} pages`, readString];
 }
 
 // Info element.
