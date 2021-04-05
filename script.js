@@ -42,6 +42,7 @@ const infoEl = document.querySelector('#info');
 // Form variables.
 const newBookForm = document.querySelector('form');
 let isFormVisible = false;
+newBookForm.addEventListener('submit', addBookToLibrary);
 
 function displayBookInfo(infoArray) {
     if (isFormVisible) { // If form is visible, hide it.
@@ -119,10 +120,6 @@ function removeBookFromLibrary(e) {
     // Update myLibrary array in storage.
     updateLocalStorageLib();
 }
-
-// Button to submit new book form.
-const submitBtn = document.querySelector('#submit-btn');
-submitBtn.addEventListener('click', addBookToLibrary);
 
 // Shelf element to display books.
 const shelf = document.querySelector('#shelf');
